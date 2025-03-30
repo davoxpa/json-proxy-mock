@@ -33,7 +33,7 @@ class WebSocketService {
     }
 
     console.log('Tentativo di connessione al WebSocket...');
-    this.socket = io('http://localhost:5000', {
+    this.socket = io('/', {
       transports: ['websocket'],
       reconnection: true,
       reconnectionAttempts: this.maxReconnectAttempts,

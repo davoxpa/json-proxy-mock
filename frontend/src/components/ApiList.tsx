@@ -37,6 +37,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import InfoIcon from '@mui/icons-material/Info';
 import { apiService, IMemoryJson } from '../services/apiService';
+import { websocketService, LogEntry } from '../services/websocket.service';
 
 const HTTP_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'];
 
@@ -63,6 +64,20 @@ export default function ApiList() {
 
   useEffect(() => {
     loadApis();
+  }, []);
+
+  useEffect(() => {
+    const subscription = websocketService.getLogs().subscribe((logs: LogEntry[]) => {
+      // Controlla se c'è almeno un log di tipo mock
+      const hasMockLogs = logs.some(log => log.type === 'mock');
+      if (hasMockLogs) {
+        loadApis();
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const loadApis = async () => {

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/memory-json';
+const API_BASE_URL = '/memory-json';
 
 export interface IMemoryJson {
   id?: string;
