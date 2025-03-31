@@ -50,10 +50,4 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 mocks/
-admin/index.html
-admin/vite.svg
-admin/assets/index-BAPPls37.js
-admin/assets/index-BBG71LPL.js
-admin/assets/index-BIOxUXCv.js
-admin/assets/index-BiuKhkWf.js
-admin/assets/index-Dtn62Xmo.css
+
